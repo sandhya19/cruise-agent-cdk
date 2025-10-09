@@ -49,6 +49,13 @@ class AppStack(Stack):
 
         quote = api.root.add_resource("quote")
         quote.add_method("POST")  # POST /quote
+
+        health = api.root.add_resource("health")
+        health.add_method("GET", apigw.MockIntegration(
+            integration_responses=[{"statusCode": "200"}],
+            request_templates={"application/json": '{"status": "ok"}'}
+        ))
+        
         # Output the api URL
         CfnOutput(self, "APIEndpoint", value=f"{api.url}quote")
 

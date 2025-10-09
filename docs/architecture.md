@@ -1,5 +1,7 @@
 # Cruise & Stay Quote Agent – Architecture
 
+Below is the high-level system flow showing how different AWS services interact.
+
 ```mermaid
 graph TD
   A[User in Browser] -->|POST /quote| B[API Gateway]
